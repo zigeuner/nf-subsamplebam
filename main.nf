@@ -22,10 +22,12 @@ process subsample {
 
     output:
       path 'subsampled.bam'
+      path 'subsampled.bam.bai'
 
     script:
       """
-      samtools view -bs 42.01 $bamfile > subsampled.bam      
+      samtools view -bs 42.01 $bamfile > subsampled.bam
+      samtools index subsampled.bam
       """
 }
 
